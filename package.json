@@ -1,0 +1,34 @@
+{
+  "name": "cljs-hello-world",
+  "displayName": "ClojureScript Hello World",
+  "description": "Simple VSCode extension in ClojureScript",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/main.js",
+  "contributes": {
+    "commands": [{
+      "command": "cljs-hello-world.helloWorld",
+      "title": "Hello World"
+    }],
+    "menus": {
+      "editor/context": [{
+        "command": "cljs-hello-world.helloWorld",
+        "group": "navigation"
+      }]
+    }
+  },
+  "scripts": {
+    "watch": "shadow-cljs watch extension",
+    "compile": "shadow-cljs compile extension",
+    "release": "shadow-cljs release extension"
+  },
+  "devDependencies": {
+    "shadow-cljs": "^2.25.2"
+  }
+}

@@ -1,0 +1,8 @@
+{:source-paths ["src"]
+ :dependencies []
+ :builds
+ {:extension
+  {:target :node-library
+   :exports {:activate extension.core/activate}
+   :output-to "out/main.js"
+   :output-dir "out"}}}
