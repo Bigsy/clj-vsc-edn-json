@@ -1,25 +1,26 @@
 {
-  "name": "cljs-hello-world",
-  "displayName": "ClojureScript Hello World",
-  "description": "Simple VSCode extension in ClojureScript",
+  "name": "clj-vsc-formatter",
+  "displayName": "ClojureScript JSON to EDN",
+  "description": "VSCode extension to convert JSON to Clojure EDN",
   "version": "0.1.0",
   "engines": {
     "vscode": "^1.80.0"
   },
   "categories": [
-    "Other"
+    "Formatters"
   ],
   "activationEvents": [],
   "main": "./out/main.js",
   "contributes": {
     "commands": [{
-      "command": "cljs-hello-world.helloWorld",
-      "title": "Hello World"
+      "command": "clj-vsc-formatter.jsonToEdn",
+      "title": "Convert JSON to EDN"
     }],
     "menus": {
       "editor/context": [{
-        "command": "cljs-hello-world.helloWorld",
-        "group": "navigation"
+        "command": "clj-vsc-formatter.jsonToEdn",
+        "when": "editorHasSelection",
+        "group": "1_modification"
       }]
     }
   },
