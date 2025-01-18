@@ -1,6 +1,6 @@
 # ClojureScript JSON to EDN Converter for VSCode
 
-A Visual Studio Code extension written in ClojureScript that converts between JSON and Clojure EDN formats. Useful when working with RESTful APIs and without a REPL for conversion.
+A Visual Studio Code extension written in ClojureScript that converts between JSON and Clojure EDN formats. Useful when working with RESTful APIs and without a REPL for conversion. https://marketplace.visualstudio.com/items?itemName=billhedworth.clj-vsc-formatter
 
 ## Features
 
@@ -15,7 +15,7 @@ A Visual Studio Code extension written in ClojureScript that converts between JS
 
 ## Installation
 
-1. Install from VSCode Marketplace (link TBD)
+1. Install from VSCode Marketplace https://marketplace.visualstudio.com/items?itemName=billhedworth.clj-vsc-formatter
 2. Reload VSCode
 
 ## Usage
