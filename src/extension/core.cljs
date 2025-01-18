@@ -3,6 +3,23 @@
             [cljs.tools.reader.edn :as edn]
             [clojure.pprint :as pp]))
 
+(defn edn->json
+  []
+  (let [editor (.. vscode -window -activeTextEditor)]
+    (when editor
+      (let [document (.-document editor)
+            selection (.-selection editor)
+            selected-text (.getText document selection)]
+        (try
+          (let [edn-data (edn/read-string selected-text)
+                json-str (js/JSON.stringify (clj->js edn-data) nil 2)]
+            (-> (.edit editor
+                      (fn [edit]
+                        (.replace edit selection json-str)))
+                (.then #(println "EDN converted to JSON successfully"))))
+          (catch :default e
+            (.. vscode -window (showErrorMessage (str "Error converting EDN: " (.-message e))))))))))
+
 (defn json->edn
   []
   (let [editor (.. vscode -window -activeTextEditor)]
@@ -22,9 +39,14 @@
 
 (defn activate
   [context]
-  (let [disposable (.. vscode -commands
-                      (registerCommand
-                       "clj-vsc-formatter.jsonToEdn"
-                       json->edn))]
-    (.push (.-subscriptions context) disposable)
-    (println "ClojureScript JSON to EDN converter activated!")))
+  (let [json-to-edn (.. vscode -commands
+                       (registerCommand
+                        "clj-vsc-formatter.jsonToEdn"
+                        json->edn))
+        edn-to-json (.. vscode -commands
+                       (registerCommand
+                        "clj-vsc-formatter.ednToJson"
+                        edn->json))]
+    (.push (.-subscriptions context) json-to-edn)
+    (.push (.-subscriptions context) edn-to-json)
+    (println "ClojureScript JSON/EDN converter activated!")))

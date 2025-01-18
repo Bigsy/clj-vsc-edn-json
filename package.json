@@ -1,7 +1,7 @@
 {
   "name": "clj-vsc-formatter",
-  "displayName": "ClojureScript JSON to EDN",
-  "description": "VSCode extension to convert JSON to Clojure EDN",
+  "displayName": "ClojureScript JSON/EDN Converter",
+  "description": "VSCode extension to convert between JSON and Clojure EDN formats",
   "version": "0.1.0",
   "engines": {
     "vscode": "^1.80.0"
@@ -12,16 +12,29 @@
   "activationEvents": [],
   "main": "./out/main.js",
   "contributes": {
-    "commands": [{
-      "command": "clj-vsc-formatter.jsonToEdn",
-      "title": "Convert JSON to EDN"
-    }],
-    "menus": {
-      "editor/context": [{
+    "commands": [
+      {
         "command": "clj-vsc-formatter.jsonToEdn",
-        "when": "editorHasSelection",
-        "group": "1_modification"
-      }]
+        "title": "Convert JSON to EDN"
+      },
+      {
+        "command": "clj-vsc-formatter.ednToJson",
+        "title": "Convert EDN to JSON"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "clj-vsc-formatter.jsonToEdn",
+          "when": "editorHasSelection",
+          "group": "1_modification"
+        },
+        {
+          "command": "clj-vsc-formatter.ednToJson",
+          "when": "editorHasSelection",
+          "group": "1_modification"
+        }
+      ]
     }
   },
   "scripts": {
