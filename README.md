@@ -1,6 +1,6 @@
 # ClojureScript JSON to EDN Converter
 
-A Visual Studio Code extension that converts JSON to Clojure EDN format. This extension makes it easy to transform JSON data into EDN format directly within your editor.
+A Visual Studio Code extension written in ClojureScript that converts JSON to Clojure EDN format. This extension makes it easy to transform JSON data into EDN format directly within your editor.
 
 ## Features
 
