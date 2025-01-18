@@ -1,5 +1,10 @@
 {
   "name": "clj-vsc-formatter",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bigsy/clj-vsc-edn-json"
+  },
+  "license": "MIT",
   "displayName": "ClojureScript JSON/EDN Converter",
   "description": "VSCode extension to convert between JSON and Clojure EDN formats",
   "version": "0.1.0",
