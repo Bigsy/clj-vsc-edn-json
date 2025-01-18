@@ -3,6 +3,7 @@
   "displayName": "ClojureScript JSON/EDN Converter",
   "description": "VSCode extension to convert between JSON and Clojure EDN formats",
   "version": "0.1.0",
+  "icon": "src/extension/imgs/edn-256-dark.png",
   "engines": {
     "vscode": "^1.80.0"
   },
@@ -55,9 +56,11 @@
   "scripts": {
     "watch": "shadow-cljs watch extension",
     "compile": "shadow-cljs compile extension",
-    "release": "shadow-cljs release extension"
+    "release": "shadow-cljs release extension",
+    "package": "vsce package"
   },
   "devDependencies": {
-    "shadow-cljs": "^2.25.2"
+    "shadow-cljs": "^2.25.2",
+    "@vscode/vsce": "^2.22.0"
   }
 }

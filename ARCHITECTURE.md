@@ -58,3 +58,7 @@ The flatten functionality is implemented in the `flatten-string` function which:
 - Integrates with VSCode's command palette
 - Context menu integration when text is selected
 - Supports VSCode's standard extension lifecycle
+- Custom extension icon
+
+## Assets
+- Extension icon located at src/extension/imgs/edn-256-dark.png
