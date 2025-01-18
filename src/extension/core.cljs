@@ -11,15 +11,17 @@
             selection (.-selection editor)
             selected-text (.getText document selection)]
         (try
-          (let [parsed-data (try
-                             ;; Try JSON first
-                             (js->clj (js/JSON.parse selected-text) :keywordize-keys true)
-                             (catch :default _
-                               ;; If JSON fails, try EDN
-                               (edn/read-string selected-text)))
+          (let [[parsed-data is-json?] (try
+                                        ;; Try JSON first
+                                        [(js->clj (js/JSON.parse selected-text) :keywordize-keys true) true]
+                                        (catch :default _
+                                          ;; If JSON fails, try EDN
+                                          [(edn/read-string selected-text) false]))
                 flattened-str (if (string? parsed-data)
                                parsed-data
-                               (js/JSON.stringify (clj->js parsed-data)))]
+                               (if is-json?
+                                 (js/JSON.stringify (clj->js parsed-data))
+                                 (pr-str parsed-data)))]
             (-> (.edit editor
                       (fn [edit]
                         (.replace edit selection flattened-str)))
