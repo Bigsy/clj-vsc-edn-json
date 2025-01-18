@@ -6,10 +6,11 @@ This VSCode extension is built using ClojureScript and provides functionality to
 ## Core Components
 
 ### Command Registration
-- The extension registers two commands:
+- The extension registers three commands:
   1. `clj-vsc-formatter.jsonToEdn`
   2. `clj-vsc-formatter.ednToJson`
-- Both commands are accessible through the editor context menu when text is selected
+  3. `clj-vsc-formatter.flatten`
+- Both commands are accessible through a submenu called "EDN/JSON Convert" in the editor context menu when text is selected
 - Activation occurs when the extension is loaded via the `activate` function
 
 ### Core Functionality
@@ -28,6 +29,14 @@ The reverse conversion logic is implemented in the `edn->json` function which:
 3. Parses EDN into ClojureScript data structures using `cljs.tools.reader.edn`
 4. Converts to JSON format with 2-space indentation
 5. Replaces the selected text with the formatted JSON
+
+#### Flatten (`flatten-string`)
+The flatten functionality is implemented in the `flatten-string` function which:
+1. Accesses the active text editor
+2. Retrieves the selected text
+3. Attempts to parse as JSON first, falls back to EDN if JSON parsing fails
+4. Converts the parsed data structure back to a single-line string format
+5. Replaces the selected text with the flattened string
 
 ### Error Handling
 - JSON parsing errors are caught and displayed as VSCode error messages

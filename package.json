@@ -20,22 +20,37 @@
       {
         "command": "clj-vsc-formatter.ednToJson",
         "title": "Convert EDN to JSON"
+      },
+      {
+        "command": "clj-vsc-formatter.flatten",
+        "title": "Flatten EDN/JSON"
       }
     ],
     "menus": {
-      "editor/context": [
+        "editor/context": [
+          {
+            "submenu": "edn-json-convert",
+            "group": "1_modification"
+          }
+        ],
+        "edn-json-convert": [
+          {
+            "command": "clj-vsc-formatter.jsonToEdn"
+          },
+          {
+            "command": "clj-vsc-formatter.ednToJson"
+          },
+          {
+            "command": "clj-vsc-formatter.flatten"
+          }
+        ]
+      },
+      "submenus": [
         {
-          "command": "clj-vsc-formatter.jsonToEdn",
-          "when": "editorHasSelection",
-          "group": "1_modification"
-        },
-        {
-          "command": "clj-vsc-formatter.ednToJson",
-          "when": "editorHasSelection",
-          "group": "1_modification"
+          "id": "edn-json-convert",
+          "label": "EDN/JSON Convert"
         }
       ]
-    }
   },
   "scripts": {
     "watch": "shadow-cljs watch extension",
