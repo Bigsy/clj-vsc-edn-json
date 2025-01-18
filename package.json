@@ -1,6 +1,6 @@
 {
   "name": "clj-vsc-formatter",
-  "publisher": "BillHedworth",
+  "publisher": "billhedworth",
   "repository": {
     "type": "git",
     "url": "https://github.com/Bigsy/clj-vsc-edn-json"
